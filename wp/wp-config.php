@@ -17,33 +17,25 @@
  *
  * @package WordPress
  */
-
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-if (isset($_ENV['DATABASE'])) {
-  define( 'DB_NAME', $_ENV['DATABASE'] );
-}
+define( 'DB_NAME', 'test' );
 
 /** Database username */
-if (isset($_ENV['USERNAME'])) {
-  define( 'DB_USER', $_ENV['USERNAME'] );
-}
+define( 'DB_USER', '2vfvyiu6B9JKo8C.root' );
 
 /** Database password */
-if (isset($_ENV['PASSWORD'])) {
-  define( 'DB_PASSWORD', $_ENV['PASSWORD'] );
-}
+define( 'DB_PASSWORD', 'Dr6lnGFI7vUV940t' );
 
 /** Database hostname */
-if (isset($_ENV['HOST'])) {
-  define( 'DB_HOST', $_ENV['HOST'] );
-}
+define( 'DB_HOST', 'gateway01.us-east-1.prod.aws.tidbcloud.com:4000' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define( 'DB_COLLATE', 'utf8mb4_general_ci' );
 
 /**#@+
  * Authentication unique keys and salts.
@@ -73,7 +65,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = isset($_ENV['TABLE_PREFIX']) ? $_ENV['TABLE_PREFIX'] : 'wp_';
+$table_prefix = 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -91,21 +83,7 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
-$_SERVER['HTTPS'] = 'on';
 
-// Optional S3 credentials for file storage.
-if (isset($_ENV['S3_KEY_ID']) && isset($_ENV['S3_ACCESS_KEY'])) {
-	define( 'AS3CF_SETTINGS', serialize( array(
-        'provider' => 'aws',
-        'access-key-id' => $_ENV['S3_KEY_ID'],
-        'secret-access-key' => $_ENV['S3_ACCESS_KEY'],
-) ) );
-}
-
-// Disable file modification because the changes won't be persisted.
-define('DISALLOW_FILE_EDIT', true );
-define('DISALLOW_FILE_MODS', true );
 
 /* That's all, stop editing! Happy publishing. */
 
